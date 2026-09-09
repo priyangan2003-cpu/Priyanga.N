@@ -1,0 +1,818 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMCNusR+qu7nsZBcDmlBF3H",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/priyangan2003-cpu/Priyanga.N/blob/main/Function%20Concepts%20of%20lambda\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "2KL5S0T_cshC",
+        "outputId": "e4d48fa2-f675-463a-8328-a3a648c2d0b7"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "square(7): 49\n"
+          ]
+        }
+      ],
+      "source": [
+        "def square(n):\n",
+        "  return n*n\n",
+        "result=square(7)\n",
+        "print(\"square(7):\",result)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def min_max(numbers):\n",
+        "  return min(numbers),max(numbers)\n",
+        "low,high=min_max([4,1,9,2,7])\n",
+        "print(\"min:\",low,\"max:\",high)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "_rs2QYw_d4Ms",
+        "outputId": "c8ee65f6-1148-417b-c640-50df98321567"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "min: 1 max: 9\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def greet(name,message=\"hellow\"):\n",
+        "  return f\"{message},{name}!\"\n",
+        "print(greet(\"alice\"))\n",
+        "print(greet(\"bob\",\"good morning\"))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "L_GvZUClepgs",
+        "outputId": "b0aed96d-df72-4c5e-fc34-9128becc9050"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "hellow,alice!\n",
+            "good morning,bob!\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def total_cost(*prices):\n",
+        "  return sum(prices)\n",
+        "print(\"total:\",total_cost(120,250,80,45))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "MR-ymZqHfJ7M",
+        "outputId": "92df6156-6bd7-4a70-d366-df3cb07937bf"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "total: 495\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def student_info(**details):\n",
+        "  for key,value in details.items():\n",
+        "   print(f\"{key}:{value}\")\n",
+        "student_info(name=\"ravi\",age=20,grad=\"a\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "oKR7LXEBfkvd",
+        "outputId": "f35de463-58b9-4958-e5fc-96b21e246cbf"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "name:ravi\n",
+            "age:20\n",
+            "grad:a\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def celsius_to_fahrenheit(c):\n",
+        "  return(c*9/5)+32\n",
+        "def print_temperature(c):\n",
+        "  f=celsius_to_fahrenheit(c)\n",
+        "  print(f\"{c}0c={f:.1f}0f\")\n",
+        "print_temperature(0)\n",
+        "print_temperature(100)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "BFTzUbRGgY2_",
+        "outputId": "d610ec4a-66da-4aa8-c8ae-ecdfbe672bf5"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "00c=32.00f\n",
+            "1000c=212.00f\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def factorial(n):\n",
+        "  if n==0 or n==1:\n",
+        "    return 1\n",
+        "  return n*factorial(n-1)\n",
+        "print(\"factorial of 6:\",factorial(6))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "919vpiLVhSQ-",
+        "outputId": "c030dc03-f614-4415-b806-c9f4723b29f1"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "factorial of 6: 720\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def average(marks):\n",
+        "  return sum(marks)/len(marks)\n",
+        "scores=[85,90,78,92,88]\n",
+        "print(\"average:\",average(scores))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "qxGYskEVjRf9",
+        "outputId": "ccd7547f-a847-47d9-a227-f77c8ead1adf"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "average: 86.6\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def multiplier(factor):\n",
+        "  def multiply(n):\n",
+        "    return n*factor\n",
+        "  return multiply\n",
+        "double=multiplier(2)\n",
+        "triple=multiplier(3)\n",
+        "print(double(5),triple(5))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "lskmAeM8jxMY",
+        "outputId": "4e830b7b-20de-485b-fea6-68579008ed98"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "10 15\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "add=lambda a,b:a+b\n",
+        "square=lambda x:x**2\n",
+        "numbers=[3,1,4,1,5,9]\n",
+        "sorted_nums=sorted(numbers,key=lambda x:-x)\n",
+        "print(\"add:\",add(4,6))\n",
+        "print(\"square:\",square(7))\n",
+        "print(\"descending:\",sorted_nums)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "_rMYtGuCklZr",
+        "outputId": "c5c0d13d-9626-4160-e7f4-496717806d0f"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "add: 10\n",
+            "square: 49\n",
+            "descending: [9, 5, 4, 3, 1, 1]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def calculate_bmi(weight:float,height:float)->str:\n",
+        " bmi=weight/(height**2)\n",
+        " if bmi < 18.5:\n",
+        "    return f\"bmi:{bmi:.1f}-underweight\"\n",
+        " elif bmi < 25:\n",
+        "    return f\"bmi:{bmi:.1f}-norml\"\n",
+        " else:\n",
+        "  return f\"bmi:{bmi:.1f}-overweight\"\n",
+        "print(calculate_bmi(70,1.75))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "vmc_TbjyljSq",
+        "outputId": "88752119-025d-4d6e-f739-a27299c60a1a"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "bmi:22.9-norml\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def remove_spaces(text):\n",
+        "  return text.strip()\n",
+        "def too_uppercase(text):\n",
+        "  return text.upper()\n",
+        "def add_exclamation(text):\n",
+        "  return text+\"!\"\n",
+        "def process(text):\n",
+        "  return add_exclamation(to_uppercase(remove_spaces(text)))\n",
+        "print(process(\" hello world \"))\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 295
+        },
+        "id": "LLH8tTQMpe2F",
+        "outputId": "b033786e-1889-4aca-95b1-36e2e162e760"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "name 'to_uppercase' is not defined",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m/tmp/ipykernel_3196/904582639.py\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      7\u001b[0m \u001b[0;32mdef\u001b[0m \u001b[0mprocess\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mtext\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      8\u001b[0m   \u001b[0;32mreturn\u001b[0m \u001b[0madd_exclamation\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mto_uppercase\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mremove_spaces\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mtext\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 9\u001b[0;31m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mprocess\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\" hello world \"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;32m/tmp/ipykernel_3196/904582639.py\u001b[0m in \u001b[0;36mprocess\u001b[0;34m(text)\u001b[0m\n\u001b[1;32m      6\u001b[0m   \u001b[0;32mreturn\u001b[0m \u001b[0mtext\u001b[0m\u001b[0;34m+\u001b[0m\u001b[0;34m\"!\"\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      7\u001b[0m \u001b[0;32mdef\u001b[0m \u001b[0mprocess\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mtext\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 8\u001b[0;31m   \u001b[0;32mreturn\u001b[0m \u001b[0madd_exclamation\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mto_uppercase\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mremove_spaces\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mtext\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      9\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mprocess\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\" hello world \"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mNameError\u001b[0m: name 'to_uppercase' is not defined"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def display_employee(emp:dict):\n",
+        "  print(f\"name:{emp['name']}\")\n",
+        "  print(f\"dept:{emp['dept']}\")\n",
+        "  print(f\"salary:{emp['salary']}\")\n",
+        "emp={\"name\":\"priya\",\"dept\":\"finace\",\"salary\":55000}\n",
+        "display_employee(emp)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "zZyQFmsVxFkY",
+        "outputId": "b5410e4b-fa30-45d7-f524-95f899da9c11"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "name:priya\n",
+            "dept:finace\n",
+            "salary:55000\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def fibonacci(n):\n",
+        "  sequence=[]\n",
+        "  a,b=0,1\n",
+        "  for _ in range(n):\n",
+        "    sequence.append(a)\n",
+        "    a,b=b,a+b\n",
+        "  return sequence\n",
+        "def print_fibonacci(n):\n",
+        "  seq=fibonacci(n)\n",
+        "  print(\"fibonacci:\",seq)\n",
+        "print_fibonacci(10)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VU3w8CD7yG3T",
+        "outputId": "f51cec1c-2784-4fc0-bae4-2a30275add5a"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "fibonacci: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def add_item(item,ist=None):\n",
+        "  if ist is None:\n",
+        "    ist=[]\n",
+        "  ist.append(item)\n",
+        "  return ist\n",
+        "list1=add_item(\"apple\")\n",
+        "list2=add_item(\"banana\")\n",
+        "print(list1)\n",
+        "print(list2)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "GKt2CmEYJP6I",
+        "outputId": "5af7e2b1-49f7-4b8f-cdfd-ad5db68ea5c9"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['apple']\n",
+            "['banana']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from functools import reduce\n",
+        "numbers=[1,2,3,4,5,6]\n",
+        "squared=list(map(lambda x:x**2,numbers))\n",
+        "evens=list(filter(lambda x:x%2==0,numbers))\n",
+        "total=reduce(lambda a,b:a+b,numbers)\n",
+        "print(\"squared:\",squared)\n",
+        "print(\"evens\",evens)\n",
+        "print(\"Total:\",total)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "jhkdfewuKYUG",
+        "outputId": "f8c7d9c7-69da-4ed4-b553-6f9e2c9daf3a"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "squared: [1, 4, 9, 16, 25, 36]\n",
+            "evens [2, 4, 6]\n",
+            "Total: 21\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def timer_decorator(func):\n",
+        "  import time\n",
+        "  def wrapper(*args,**kwargs):\n",
+        "    start=time.time()\n",
+        "    result=func(*args,**kwargs)\n",
+        "    end=time.time()\n",
+        "    print(f\"{func._name_}ran in {end-start:.4f}s\")\n",
+        "    return result\n",
+        "  return wrapper\n",
+        "@timer_decorator\n",
+        "def compute_sun(n):\n",
+        "  return sum(range(n))\n",
+        "print(compute_sun(100000))\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 351
+        },
+        "id": "pBFf1355LgvX",
+        "outputId": "41f0837f-b7cd-4c01-ddbc-78b503c778c0"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "AttributeError",
+          "evalue": "'function' object has no attribute '_name_'",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
+            "\u001b[0;32m/tmp/ipykernel_578/2809321258.py\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[1;32m     11\u001b[0m \u001b[0;32mdef\u001b[0m \u001b[0mcompute_sun\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mn\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     12\u001b[0m   \u001b[0;32mreturn\u001b[0m \u001b[0msum\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mrange\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mn\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 13\u001b[0;31m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mcompute_sun\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m100000\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     14\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     15\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/tmp/ipykernel_578/2809321258.py\u001b[0m in \u001b[0;36mwrapper\u001b[0;34m(*args, **kwargs)\u001b[0m\n\u001b[1;32m      5\u001b[0m     \u001b[0mresult\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mfunc\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m*\u001b[0m\u001b[0margs\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m**\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      6\u001b[0m     \u001b[0mend\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0mtime\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mtime\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 7\u001b[0;31m     \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34mf\"{func._name_}ran in {end-start:.4f}s\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      8\u001b[0m     \u001b[0;32mreturn\u001b[0m \u001b[0mresult\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      9\u001b[0m   \u001b[0;32mreturn\u001b[0m \u001b[0mwrapper\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mAttributeError\u001b[0m: 'function' object has no attribute '_name_'"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def bank_account(balance):\n",
+        "  def deposit(amount):\n",
+        "    return balance+amount\n",
+        "  def withdraw(amount):\n",
+        "    if amount>balance:\n",
+        "      return\"insufficient funds\"\n",
+        "    return balance-amount\n",
+        "  print(\"deposit 500:\",deposit(500))\n",
+        "  print(\"withdraw 200:\",withdraw(200))\n",
+        "  print(\"withdraw 999:\",withdraw(999))\n",
+        "bank_account(300)\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "jXosV-6YO20K",
+        "outputId": "e44d29aa-546e-4cd3-a169-57cdf81c2ea1"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "deposit 500: 800\n",
+            "withdraw 200: 100\n",
+            "withdraw 999: insufficient funds\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def get_squares(start,end):\n",
+        "  return[x**2 for x in range (start,end+1)if x%2==0]\n",
+        "result=get_squares(1,10)\n",
+        "print(\"even squares:\",result)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "DbgGC8z3QcvJ",
+        "outputId": "a6f06e25-692d-4a6d-954d-a94bc2743204"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "even squares: [4, 16, 36, 64, 100]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def safe_divide(a,b):\n",
+        "  try:\n",
+        "    return a/b\n",
+        "  except ZeroDivisionError:\n",
+        "    return\"Error:Division by zero\"\n",
+        "  except TypeError:\n",
+        "    return \"Error:invalid types\"\n",
+        "print(safe_divide(10,2))\n",
+        "print(safe_divide(10,0))\n",
+        "print(safe_divide(10,\"x\"))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "SPQvj_vmRBgQ",
+        "outputId": "d1179d1d-ae48-4672-d293-3c92d6ca0abf"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "5.0\n",
+            "Error:Division by zero\n",
+            "Error:invalid types\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def prime_generator(limit):\n",
+        "  for num in range(2,limit+1):\n",
+        "    is_prime=all(num%i!=0 for i in range(2,int(num**0.5)+1))\n",
+        "    if is_prime:\n",
+        "      yield num\n",
+        "primes=list(prime_generator(30))\n",
+        "print(\"primes up to 30:\",primes)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "vtKeY1OdSLiU",
+        "outputId": "c307c2f6-abb4-4a45-9d55-7dbf4b48cc91"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "primes up to 30: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def apply_operation(a,b,operation):\n",
+        "  return operation(a,b)\n",
+        "def add(x,y):\n",
+        "  return x+y\n",
+        "def subtract(x,y):\n",
+        "  return x-y\n",
+        "def multiply(x,y):\n",
+        "  return x*y\n",
+        "for op in [add,subtract,multiply]:\n",
+        "  print(f\"{op._name_}(10,3)={apply_operation(10,3,op)}\")\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 185
+        },
+        "id": "RMx1tDLvTIR5",
+        "outputId": "89716893-3609-401a-e95a-9f63d371c207"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "AttributeError",
+          "evalue": "'function' object has no attribute '_name_'",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
+            "\u001b[0;32m/tmp/ipykernel_578/2153262109.py\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      8\u001b[0m   \u001b[0;32mreturn\u001b[0m \u001b[0mx\u001b[0m\u001b[0;34m*\u001b[0m\u001b[0my\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      9\u001b[0m \u001b[0;32mfor\u001b[0m \u001b[0mop\u001b[0m \u001b[0;32min\u001b[0m \u001b[0;34m[\u001b[0m\u001b[0madd\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0msubtract\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0mmultiply\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 10\u001b[0;31m    \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34mf\"{op._name_}(10,3)={apply_operation(10,3,op)}\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mAttributeError\u001b[0m: 'function' object has no attribute '_name_'"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from functools import lru_cache\n",
+        "@lru_cache(maxsize=None)\n",
+        "def fib(n):\n",
+        "  if n<=1:\n",
+        "    return n\n",
+        "  return fib(n-1)+fib(n-2)\n",
+        "for i in[10,20,30,40]:\n",
+        "  print(f\"fib({i})={fib(i)}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "crauxhpsV4Qv",
+        "outputId": "d23d1278-c25c-423b-cd65-823f7a66bccd"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "fib(10)=55\n",
+            "fib(20)=6765\n",
+            "fib(30)=832040\n",
+            "fib(40)=102334155\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from functools import partial\n",
+        "def power(base,exponent):\n",
+        "  return base**exponent\n",
+        "square=partial(power,exponent=2)\n",
+        "cube=partial(power,exponent=3)\n",
+        "for n in [2,3,4,5]:\n",
+        "  print(f\"{n}^2={square(n)} {n}^3={cube(n)}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "PO4g8eYIW5w-",
+        "outputId": "64e4e34a-3089-48e5-af8c-a2e14b4dee95"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "2^2=4 2^3=8\n",
+            "3^2=9 3^3=27\n",
+            "4^2=16 4^3=64\n",
+            "5^2=25 5^3=125\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def get_grade(score):\n",
+        "  if score>=90:return\"A\"\n",
+        "  elif score>=80:return\"B\"\n",
+        "  elif score>=70:return\"C\"\n",
+        "  elif score>=60:return\"D\"\n",
+        "  else:return\"F\"\n",
+        "def calculate_average(scores):\n",
+        "  if not scores:\n",
+        "    raise ValueError(\"No scores provided\")\n",
+        "  return sum(scores)/len(scores)\n",
+        "def generate_report(name,score,passing_score=60):\n",
+        "  avg=calculate_average(scores)\n",
+        "  grade=get_grade(avg)\n",
+        "  status=\"PASS\" if avg>=passing_score else\"FAIL\"\n",
+        "  print(f\"studrnt:{name}\")\n",
+        "  print(f\"scores:{scores}\")\n",
+        "  print(f\"average:{avg:.1f}\")\n",
+        "  print(f\"grade:{grade}\")\n",
+        "  print(f\"status:{status}\")\n",
+        "  print(\"-\"*30)\n",
+        "generate_report(\"Arun\",[80,92,76,85,90])\n",
+        "generate_report(\"Meena\",[45,55,50,40,60])\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 111
+        },
+        "id": "mFhsbL7MX1BU",
+        "outputId": "33b17c71-ce68-4171-e593-08a66ed8e1a0"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "SyntaxError",
+          "evalue": "invalid syntax (3558243833.py, line 12)",
+          "traceback": [
+            "\u001b[0;36m  File \u001b[0;32m\"/tmp/ipykernel_578/3558243833.py\"\u001b[0;36m, line \u001b[0;32m12\u001b[0m\n\u001b[0;31m    avg=calculate_average(scores):\u001b[0m\n\u001b[0m                                 ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m invalid syntax\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
